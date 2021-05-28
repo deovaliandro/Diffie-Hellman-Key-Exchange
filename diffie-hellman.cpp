@@ -36,18 +36,17 @@ int isPrimitiveRoot(int prime, int root) {
 
     for(int i=0; i<sizeof(h)/sizeof(h[0]) - 1; i++) {
         for (int j=kampret; j<sizeof(h)/sizeof(h[0]); j++) {
-            // std::cout << h[i] << "=" << h[j] << std::endl;
             if (h[i] == h[j]) {
-                std::cout << i << " " << j << " " << h[i] << " " << h[j] << std::endl;
                 std::cout << "Not primite root" << std::endl;
                 return 0;
             }
         }
-            kampret++;
-
+        
         if(isRelativePrime(prime, h[i]) != 1) {
             return 0;
         }
+
+        kampret++;
     }
 
     return 1;
@@ -56,6 +55,7 @@ int isPrimitiveRoot(int prime, int root) {
 int main() {
     int n, g = 1, x = 1, y = 1, k0, k1, X, Y;
 
+    std::cout << "Input n, g, x, y = ";
     std::cin >> n >> g >> x >> y;
 
     if(isPrimitiveRoot(n, g) == 1) {
