@@ -18,7 +18,7 @@ int isPrimitiveRoot(int prime, int root) {
     int hprime = prime;
 
     for(int i=0; i<prime; i++) {
-        h[i] = pow(root, i+1);
+        h[i] = std::pow(root, i+1);
     }
 
     for(int i=0; i<sizeof(h)/sizeof(h[0]); i++) {
@@ -39,11 +39,24 @@ int isPrimitiveRoot(int prime, int root) {
 }
 
 int main() {
-    int n, g, x, y, k0, k1;
+    int n, g = 1, x = 1, y = 1, k0, k1, X, Y;
 
-    std::cin >> n >> g;
+    std::cin >> n >> g >> x >> y;
 
     if(isPrimitiveRoot(n, g) == 1) {
+        X = std::pow(g, x);
+        Y = std::pow(g, y);
+        X = X % n;
+        Y = Y % n;
+
+        k0 = pow(Y, x);
+        k1 = pow(X, y);
+
+        if (k0 == k1) {
+            std::cout << "Key same " << k0 << std::endl;
+        } else {
+            std::cout << "Key not same" << std::endl;
+        }
         
     } else {
         std::cout << g << " is not primite root from " << n << std::endl;
